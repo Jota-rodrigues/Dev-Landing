@@ -1,0 +1,1181 @@
+/* ==========================================================================
+   João Victor — Landing page pessoal
+   Estilo: dark, verde vibrante, tecnológico e minimalista.
+   Sumário:
+     1. Tokens (variáveis)          6. Meus Gostos
+     2. Reset & base                7. Onde já fui
+     3. Utilitários / componentes   8. Top 3: Japão
+     4. Header (sticky)             9. Footer
+     5. Hero                       10. Responsividade
+                                   11. prefers-reduced-motion
+   ========================================================================== */
+
+/* 1. TOKENS ================================================================ */
+:root {
+  /* Cores */
+  --bg: #070a09;
+  --bg-elev: #0e1310;
+  --bg-core: #0b1510;
+  --green: #2ee67a;
+  --green-strong: #25e072;
+  --green-soft: rgba(46, 230, 122, 0.3);
+  --green-faint: rgba(46, 230, 122, 0.08);
+  --text: #f3f5f4;
+  --text-body: #a1a8a4;
+  --text-muted: #828c87; /* contraste ≥ 4.5:1 sobre --bg-elev */
+  --line: rgba(255, 255, 255, 0.08);
+
+  /* Tipografia */
+  --font-sans:
+    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+
+  /* Raios */
+  --r-sm: 0.5rem;
+  --r-md: 0.875rem;
+  --r-lg: 1.125rem;
+  --r-pill: 999px;
+
+  /* Layout */
+  --container: 72rem;
+  --header-h: 4.5rem;
+  --ease: 0.25s ease;
+}
+
+/* 2. RESET & BASE ========================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* rolagem suave entre âncoras */
+  scroll-padding-top: var(--header-h); /* compensa o header sticky */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-body);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+/* Grade tecnológica de fundo (pseudo-elemento fixo e decorativo) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  opacity: 0.35;
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    #000 0%,
+    transparent 75%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    #000 0%,
+    transparent 75%
+  );
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+strong {
+  color: var(--text);
+  font-weight: 600;
+}
+em {
+  color: var(--text);
+  font-style: normal;
+}
+
+abbr[title] {
+  text-decoration: underline dotted rgba(255, 255, 255, 0.3);
+  text-underline-offset: 0.2em;
+  cursor: help;
+}
+
+/* Foco visível e consistente para navegação por teclado */
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+::selection {
+  background: var(--green);
+  color: #04110a;
+}
+
+/* 3. UTILITÁRIOS / COMPONENTES ============================================ */
+.container {
+  width: min(100% - 2.5rem, var(--container));
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.5em 1em;
+  background: var(--green);
+  color: #04110a;
+  font-weight: 700;
+  border-radius: var(--r-sm);
+}
+.skip-link:focus-visible {
+  top: 1rem;
+}
+
+/* Ponto verde de "status" */
+.dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0.6em var(--green);
+}
+
+/* Monograma "JV" */
+.monogram {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  font: 700 0.75rem var(--font-mono);
+  color: var(--green);
+  background: #0d1912;
+  border: 1px solid var(--green-soft);
+  border-radius: var(--r-sm);
+}
+
+/* Pílulas monoespaçadas (SYS_PROFILE, PAÍS ALVO, etc.) */
+.pill,
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.45em 0.9em;
+  font: 500 0.75rem var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-body);
+  background: #0c120f;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+}
+
+/* Kicker de seção com linha decorativa (::before) */
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin-bottom: 0.6rem;
+  font: 500 0.75rem var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.kicker::before {
+  content: "";
+  width: 1.5em;
+  height: 2px;
+  background: var(--green);
+  box-shadow: 0 0 0.5em var(--green);
+}
+.kicker--plain::before {
+  display: none;
+}
+
+/* Botão principal */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.9em 1.5em;
+  font-weight: 700;
+  color: #04120a;
+  background: var(--green-strong);
+  border-radius: 0.625rem;
+  box-shadow: 0 0 1.75rem rgba(46, 230, 122, 0.3);
+  transition:
+    transform var(--ease),
+    box-shadow var(--ease),
+    background var(--ease);
+}
+.btn:hover {
+  background: #4ef08e;
+  transform: translateY(-2px);
+  box-shadow: 0 0 2.25rem rgba(46, 230, 122, 0.45);
+}
+
+/* Card base (gostos, viagens e destinos) */
+.card {
+  position: relative; /* referência para detalhes absolutos */
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  transition:
+    border-color var(--ease),
+    transform var(--ease),
+    box-shadow var(--ease);
+}
+.card:hover {
+  border-color: var(--green-soft);
+  transform: translateY(-3px);
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.35);
+}
+
+.card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+}
+.card__sub {
+  margin-top: 0.2rem;
+  font: 400 0.75rem var(--font-mono);
+  color: var(--text-muted);
+}
+.card__text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Link com seta animada (::after) */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font: 500 0.8rem var(--font-mono);
+  color: var(--green);
+  transition: color var(--ease);
+}
+.link-arrow::after {
+  content: "→";
+  transition: transform var(--ease);
+}
+.link-arrow:hover {
+  color: #7dffb2;
+}
+.link-arrow:hover::after {
+  transform: translateX(0.25em);
+}
+
+/* Seções e divisor central em gradiente (::before) */
+.section {
+  position: relative;
+  padding-block: clamp(4rem, 9vh, 6.5rem);
+}
+.section + .section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(80%, 56rem);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(46, 230, 122, 0.35),
+    transparent
+  );
+}
+
+.section-head {
+  margin-bottom: 2.5rem;
+}
+.section-title {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+/* Sublinhado que "acende" quando a seção é alvo da URL (:target) */
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  width: 0;
+  height: 2px;
+  background: var(--green);
+  box-shadow: 0 0 0.75em var(--green);
+  transition: width 0.6s ease;
+}
+.section:target .section-title::after {
+  width: 100%;
+}
+
+.section-desc {
+  max-width: 36rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* 4. HEADER (STICKY) ====================================================== */
+.header {
+  position: sticky; /* acompanha a rolagem no topo */
+  top: 0;
+  z-index: 50;
+  background: rgba(7, 10, 9, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.brand__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+/* Ponto verde após o nome (::after) */
+.brand__name::after {
+  content: "";
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.nav__list {
+  display: flex;
+  gap: 2rem;
+}
+.nav__link {
+  position: relative;
+  display: inline-block;
+  padding-block: 0.4em;
+  font: 400 0.8rem var(--font-mono);
+  color: #8f9893;
+  white-space: nowrap;
+  transition: color var(--ease);
+}
+.nav__link span {
+  color: #5f6964;
+  transition: color var(--ease);
+}
+/* Indicador inferior no hover (::after) */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--ease);
+}
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--text);
+}
+.nav__link:hover span {
+  color: var(--green);
+}
+.nav__link:hover::after {
+  transform: scaleX(1);
+}
+
+.status-pill {
+  color: var(--green);
+  background: #0d1712;
+  border-color: rgba(46, 230, 122, 0.28);
+}
+
+/* 5. HERO ================================================================== */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - var(--header-h));
+  overflow: hidden;
+}
+/* Brilho radial verde atrás do hero (::after) */
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 10%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 50rem;
+  max-height: 50rem;
+  background: radial-gradient(circle, rgba(46, 230, 122, 0.1), transparent 65%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.hero__content {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.hero__title {
+  font-size: clamp(2.5rem, 1.5rem + 3.4vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+/* Nome com gradiente branco/verde animado passando pelas letras */
+.gradient-name {
+  display: inline-block;
+  text-decoration: none;
+  cursor: default;
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #e8fff1 25%,
+    #2ee67a 45%,
+    #9bf5c2 55%,
+    #ffffff 75%,
+    #e8fff1 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: name-shine 6s linear infinite;
+}
+@keyframes name-shine {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -150% 0;
+  }
+}
+
+.hero__subtitle {
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.45rem);
+}
+.hero__jv {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--green);
+}
+
+.hero__bio {
+  max-width: 30rem;
+  font-size: 1rem;
+}
+
+/* Chips de interesses */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.55em 0.9em;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  background: #111613;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  transition: border-color var(--ease);
+}
+.chip:hover {
+  border-color: var(--green-soft);
+}
+.chip svg,
+.chip img,
+.icon-box svg,
+.icon-box img {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  object-fit: contain;
+}
+
+/* Moldura da foto: relativa, com cantos HUD absolutos (::before/::after) */
+.hero__frame {
+  position: relative;
+  flex: 0 1 40%;
+  max-width: 24rem;
+  aspect-ratio: 1 / 1.05;
+}
+.hero__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+}
+.hero__frame::before,
+.hero__frame::after {
+  content: "";
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid var(--green);
+  filter: drop-shadow(0 0 0.35rem rgba(46, 230, 122, 0.6));
+  pointer-events: none;
+}
+.hero__frame::before {
+  top: -0.75rem;
+  left: -0.75rem;
+  border-right: 0;
+  border-bottom: 0;
+  border-top-left-radius: 0.5rem;
+}
+.hero__frame::after {
+  right: -0.75rem;
+  bottom: -0.75rem;
+  border-left: 0;
+  border-top: 0;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* Barra HUD sobreposta à foto */
+.hero__hud {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 2.5rem 1rem 0.85rem;
+  font: 500 0.7rem var(--font-mono);
+  color: #b4bcb8;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  border-radius: 0 0 1rem 1rem;
+}
+.hud-green {
+  color: var(--green);
+}
+
+/* 6. MEUS GOSTOS =========================================================== */
+.likes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.like {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+/* Rótulo "01 // MOD" posicionado no canto do card */
+.like__tag {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font: 400 0.7rem var(--font-mono);
+  color: var(--text-muted);
+}
+
+.icon-box {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.15rem;
+  background: #0d1912;
+  border: 1px solid var(--green-soft);
+  border-radius: 0.625rem;
+  transition: box-shadow var(--ease);
+}
+.like:hover .icon-box {
+  box-shadow: 0 0 1rem rgba(46, 230, 122, 0.3);
+}
+
+/* Rodapé do card: divisor + rótulo / valor (empurrado para baixo) */
+.card__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  color: #c9cfcc;
+  border-top: 1px solid var(--line);
+}
+.card__text + .card__foot,
+.tech-tags + .card__foot {
+  margin-top: auto;
+}
+.like .card__text {
+  margin-bottom: 1.25rem;
+}
+.card__foot span {
+  font: 400 0.68rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.card__foot em {
+  color: var(--green);
+}
+
+/* Card de destaque: Tecnologia */
+.like--core {
+  background: var(--bg-core);
+  border-color: rgba(46, 230, 122, 0.35);
+}
+.like--core .like__tag {
+  color: var(--green);
+}
+
+/* Mini grid 2×2 de áreas de tecnologia */
+.tech-tags {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.625rem;
+  margin-block: 1rem 1.25rem;
+}
+.tech-tags li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.6em 0.7em;
+  font-size: 0.78rem;
+  color: var(--text);
+  background: #0a0f0c;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  transition: border-color var(--ease);
+}
+.tech-tags li:hover {
+  border-color: var(--green-soft);
+}
+.tech-tags .tech-tags__java {
+  font-family: var(--font-mono);
+  color: var(--green);
+  background: var(--green-faint);
+  border-color: var(--green-soft);
+}
+
+/* 7. ONDE JÁ FUI =========================================================== */
+.trips {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.trip {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+}
+/* Alterna o lado da imagem nos cards pares (:nth-child) */
+.trip:nth-child(even) .trip__media {
+  order: 2;
+}
+
+.trip__media {
+  position: relative; /* referência para a pílula LOG */
+  padding: 0.5rem;
+  border-radius: var(--r-md);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(46, 230, 122, 0.08),
+    transparent 70%
+  );
+}
+.trip__media img {
+  width: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+.trip:hover .trip__media img {
+  transform: scale(1.015);
+}
+
+/* Pílula técnica "LOG: ..." absoluta sobre as fotos */
+.log-pill {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  padding: 0.3em 0.7em;
+  font: 500 0.68rem var(--font-mono);
+  color: var(--green);
+  background: rgba(5, 10, 7, 0.85);
+  border: 1px solid var(--green-soft);
+  border-radius: 0.375rem;
+}
+.trip:nth-child(even) .log-pill {
+  left: auto;
+  right: 1.25rem;
+}
+
+.trip__title {
+  margin-top: 1rem;
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.badge {
+  padding: 0.25em 0.7em;
+  font: 500 0.7rem var(--font-mono);
+  color: #c4cbc7;
+  background: #141a17;
+  border: 1px solid var(--line);
+  border-radius: 0.375rem;
+}
+.badge--green {
+  color: var(--green);
+  background: var(--green-faint);
+  border-color: var(--green-soft);
+}
+.badge--solid {
+  color: #04120a;
+  font-weight: 700;
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.trip__foot {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  font: 400 0.7rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-top: 1px solid var(--line);
+}
+
+/* 8. TOP 3: JAPÃO ========================================================== */
+.section-head--split {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.section-head--split .pill {
+  border-radius: var(--r-sm);
+}
+
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.dest {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dest__media {
+  position: relative; /* referência para o número e o fade */
+  display: block;
+  height: 13rem;
+  overflow: hidden;
+}
+.dest__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+/* Fade inferior da imagem para o fundo do card (::after) */
+.dest__media::after {
+  content: "";
+  position: absolute;
+  inset: 40% 0 0 0;
+  background: linear-gradient(to top, var(--bg-elev), transparent);
+  pointer-events: none;
+}
+.dest:hover .dest__media img {
+  transform: scale(1.04);
+}
+.dest__media:focus-visible {
+  outline-offset: -3px;
+}
+
+.dest__num {
+  position: absolute;
+  z-index: 1;
+  top: 0.875rem;
+  left: 0.875rem;
+  padding: 0.25em 0.6em;
+  font: 700 0.75rem var(--font-mono);
+  color: var(--green);
+  background: rgba(5, 10, 7, 0.85);
+  border: 1px solid var(--green-soft);
+  border-radius: 0.375rem;
+}
+
+.dest__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+.dest__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+/* Bloco de síntese */
+.synthesis {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+  padding: 1.5rem 1.75rem;
+  overflow: hidden;
+  background: var(--bg-core);
+  border: 1px solid rgba(46, 230, 122, 0.25);
+  border-radius: var(--r-md);
+}
+/* Barra luminosa lateral (::before) */
+.synthesis::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 3px;
+  background: var(--green);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 0.75rem var(--green);
+}
+.synthesis__quote {
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.15rem);
+  font-weight: 500;
+  color: var(--text);
+}
+.synthesis .pill {
+  border-radius: var(--r-sm);
+  color: var(--text);
+}
+
+/* 9. FOOTER ================================================================ */
+.footer {
+  padding-block: 2.5rem 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer__tagline {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.875rem;
+}
+
+.to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.55em 1em;
+  font: 500 0.78rem var(--font-mono);
+  color: var(--green);
+  border: 1px solid var(--green-soft);
+  border-radius: var(--r-pill);
+  transition:
+    background var(--ease),
+    color var(--ease);
+}
+.to-top:hover {
+  color: #04120a;
+  background: var(--green);
+}
+
+/* Links da turma (preservados do HTML original) */
+.footer__class {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--line);
+  font: 400 0.75rem var(--font-mono);
+}
+.footer__class a {
+  color: var(--text-muted);
+  transition: color var(--ease);
+}
+.footer__class a:hover {
+  color: var(--green);
+}
+.footer__class a[aria-current="page"] {
+  color: var(--green);
+}
+/* Separador "/" entre links, exceto antes do primeiro (:nth-child) */
+.footer__class a:not(:nth-child(1))::before {
+  content: "/";
+  margin-right: 1.5rem;
+  color: #3a423e;
+}
+
+/* 10. RESPONSIVIDADE ======================================================= */
+
+/* Tablet */
+@media (max-width: 64rem) {
+  .likes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* O 3º destino ocupa a linha inteira no tablet */
+  .dest:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+  .dest:nth-child(3) .dest__media {
+    height: 16rem;
+  }
+
+  .hero__inner {
+    gap: 2.5rem;
+  }
+  .nav__list {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 54rem) {
+  :root {
+    --header-h: 6.25rem;
+  }
+
+  /* Header em duas linhas: marca + status / navegação rolável */
+  .header__inner {
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding-block: 0.75rem 0.25rem;
+  }
+  .nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hero empilhado, foto primeiro */
+  .hero {
+    min-height: auto;
+  }
+  .hero__inner {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .hero__content {
+    flex: none;
+  }
+  .hero__frame {
+    flex: none;
+    align-self: center;
+    width: min(75vw, 22rem);
+  }
+
+  /* Viagens em uma coluna */
+  .trip {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .trip:nth-child(even) .trip__media {
+    order: 0;
+  }
+  .trip:nth-child(even) .log-pill {
+    left: 1.25rem;
+    right: auto;
+  }
+}
+
+/* Celular */
+@media (max-width: 36rem) {
+  .container {
+    width: min(100% - 1.75rem, var(--container));
+  }
+  .status-pill {
+    display: none;
+  }
+
+  .likes-grid,
+  .dest-grid {
+    grid-template-columns: 1fr;
+  }
+  .dest:nth-child(3) .dest__media {
+    height: 13rem;
+  }
+
+  .trip {
+    padding: 1rem;
+  }
+  .like,
+  .dest__body {
+    padding-inline: 1.25rem;
+  }
+
+  .hero__hud {
+    font-size: 0.6rem;
+  }
+  .synthesis {
+    padding: 1.25rem;
+  }
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* 11. PREFERS-REDUCED-MOTION =============================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Nome estático com gradiente legível (sem movimento) */
+  .gradient-name {
+    animation: none;
+    background-position: 30% 0;
+  }
+
+  .card:hover,
+  .btn:hover,
+  .trip:hover .trip__media img,
+  .dest:hover .dest__media img {
+    transform: none;
+  }
+}
