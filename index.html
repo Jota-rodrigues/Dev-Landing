@@ -5,328 +5,282 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Landing page pessoal de João Victor (JV): gostos, viagens e os 3 destinos que quer conhecer no Japão."
+      content="Página pessoal de João Victor (JV): gostos, viagens e os 3 destinos que quer conhecer no Japão."
     />
     <title>João Victor — JV</title>
-    <link rel="shortcut icon" href="/./favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <!-- Fontes: Inter (texto) + JetBrains Mono (rótulos técnicos) -->
+    <!-- Fontes: Inter (texto e títulos modernos) + JetBrains Mono (detalhes técnicos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Estilos da página -->
     <link rel="stylesheet" href="jv.css" />
   </head>
 
   <body>
-    <!-- Link de acessibilidade: pula a navegação -->
     <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
 
-    <!-- =====================================================
-         HEADER / NAVEGAÇÃO (sticky) — alvo do "Voltar ao topo"
-         ===================================================== -->
-    <header class="header" id="topo-topo">
-      <div class="container header__inner">
-        <a class="brand" href="#topo" aria-label="João Victor — voltar ao topo">
-          <span class="monogram" aria-hidden="true">JV</span>
-          <span class="brand__name">João Victor</span>
+    <!-- Header fixo / sticky com navegação -->
+    <header class="site-header" id="topo">
+      <div class="container header-inner">
+        <a class="logo" href="#topo" aria-label="João Victor - Início">
+          <span class="logo-mono">JV</span>
+          <span class="logo-nome">João Victor</span>
         </a>
 
-        <nav class="nav" aria-label="Seções da página">
-          <ul class="nav__list">
-            <li>
-              <a class="nav__link" href="#inicio"><span>01 //</span> Início</a>
-            </li>
-            <li>
-              <a class="nav__link" href="#gostos"><span>02 //</span> Gostos</a>
-            </li>
-            <li>
-              <a class="nav__link" href="#viagens"
-                ><span>03 //</span> Viagens</a
-              >
-            </li>
-            <li>
-              <a class="nav__link" href="#destinos"
-                ><span>04 //</span> Destinos</a
-              >
-            </li>
+        <nav class="menu" aria-label="Seções da página">
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#gostos">Gostos</a></li>
+            <li><a href="#viagens">Viagens</a></li>
+            <li><a href="#destinos">Japão</a></li>
           </ul>
         </nav>
-
-        <p class="status-pill" aria-label="Status: pronto">
-          <span class="dot" aria-hidden="true"></span>SYS.READY
-        </p>
       </div>
     </header>
 
     <main>
-      <!-- =====================================================
-           HERO — Quem sou eu?
-           ===================================================== -->
-      <section class="hero section" id="inicio" aria-labelledby="hero-title">
-        <div class="container hero__inner">
-          <div class="hero__content">
-            <p class="pill">
-              <span class="dot" aria-hidden="true"></span>SYS_PROFILE:
-              JOAO_VICTOR.SYS
-            </p>
+      <!-- Hero -->
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-texto">
+            <div class="tag-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="tag-label">Perfil Pessoal · 2026</span>
+            </div>
 
-            <h1 class="hero__title" id="hero-title">
-              Olá, eu sou
-              <abbr class="gradient-name" title="JV">João Victor.</abbr>
+            <h1 id="hero-title">
+              Oi, eu sou o <span class="gradient-name">João Victor.</span>
             </h1>
 
-            <p class="hero__subtitle">
-              Mas pode me chamar de <strong class="hero__jv">JV.</strong>
+            <p class="apelido">
+              Mas pode me chamar de <strong class="destaque-jv">JV</strong>.
             </p>
 
-            <p class="hero__bio">
-              Muita gente me chama de <strong>"JV"</strong>, exceto minha
-              família, que insiste em "Victor" (com C). Sou uma pessoa
-              ambivertida que adora cabelo cacheado, tecnologia e praticar
-              esportes — além de ser muito competitivo em praticamente tudo.
+            <p class="bio">
+              Quase todo mundo me chama de JV. A exceção é a minha família, que
+              insiste em "Victor" (com C). Sou ambivertido, gosto de tecnologia,
+              cabelo cacheado e de praticar esportes — e sou competitivo em
+              praticamente tudo.
             </p>
 
-            <ul class="chips" aria-label="Principais interesses">
-              <li class="chip">
-                <img src="assets/icons/code.svg" alt="" aria-hidden="true" />
-                Tecnologia
-              </li>
-              <li class="chip">
-                <img src="assets/icons/sports.svg" alt="" aria-hidden="true" />
-                Esportes
-              </li>
-              <li class="chip">
-                <img src="assets/icons/target.svg" alt="" aria-hidden="true" />
-                Competitividade
-              </li>
-            </ul>
-
-            <a class="btn" href="#gostos"
-              >Explorar meu mapa <span aria-hidden="true">↓</span></a
-            >
+            <div class="hero-acoes">
+              <a class="botao botao-primario" href="#gostos">
+                Ver o que eu curto
+                <span class="seta-acao" aria-hidden="true">↓</span>
+              </a>
+              <a class="botao botao-secundario" href="#viagens">
+                Minhas viagens
+              </a>
+            </div>
           </div>
 
-          <!-- Moldura da foto: container relativo com cantos HUD (::before/::after) -->
-          <figure class="hero__frame">
-            <img
-              src="assets/images/jv.jpeg"
-              alt="Selfie de João Victor: jovem de cabelo cacheado, óculos, fones de ouvido, camiseta preta e corrente prateada"
-              width="1200"
-              height="1200"
-            />
-            <figcaption class="hero__hud">
-              <span class="hud-green">COORD: 23°33'S 46°38'W</span>
-              <span>ID: JV_DEV_2026</span>
-            </figcaption>
+          <figure class="foto">
+            <div class="foto-frame">
+              <img
+                src="assets/images/jv.jpeg"
+                alt="Selfie de João Victor: jovem de cabelo cacheado, óculos e fones de ouvido"
+                width="1200"
+                height="1200"
+              />
+              <div class="foto-badge">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>Atleta &amp; Desenvolvedor</span>
+              </div>
+            </div>
+            <figcaption>JV, de fones e óculos, como quase sempre.</figcaption>
           </figure>
         </div>
       </section>
 
-      <!-- =====================================================
-           MEUS GOSTOS — grid de 4 módulos
-           ===================================================== -->
-      <section class="section" id="gostos" aria-labelledby="gostos-title">
+      <!-- Meus Gostos -->
+      <section class="secao" id="gostos" aria-labelledby="gostos-title">
         <div class="container">
-          <header class="section-head">
-            <p class="kicker">Módulos de afinidade</p>
-            <h2 class="section-title" id="gostos-title">Meus Gostos</h2>
-            <p class="section-desc">
-              Interesses centrais organizados em módulos estruturados — esportes
-              rápidos, criação digital e entretenimento.
+          <header class="secao-cabecalho">
+            <span class="secao-kicker">Interesses &amp; Rotina</span>
+            <h2 class="titulo-secao" id="gostos-title">Meus gostos</h2>
+            <p class="secao-subtitulo">
+              O que me move no dia a dia: esporte competitivo, tecnologia e boas
+              histórias.
             </p>
           </header>
 
-          <ul class="likes-grid">
-            <!-- Card 01 — Tênis de mesa -->
-            <li class="card like">
-              <span class="like__tag" aria-hidden="true">01 // MOD</span>
-              <span class="icon-box" aria-hidden="true">
-                <img src="assets/icons/ping.svg" alt="Ícone de raquete" width="20px" />
-              </span>
-              <h3 class="card__title">Tênis de Mesa</h3>
-              <p class="card__sub">Esporte &amp; Reflexo</p>
-              <p class="card__text">
-                Esporte que exige agilidade motora, estratégia rápida em cada
-                saque e extrema concentração sob pressão competitiva.
-              </p>
-              <p class="card__foot"><span>Modalidade</span> Atleta Escolar</p>
+          <ul class="gostos">
+            <li class="card-gosto">
+              <div class="icone-box">
+                <img
+                  src="assets/icons/ping.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="gosto-info">
+                <h3>Tênis de mesa</h3>
+                <p>
+                  Jogo como atleta da escola. O esporte pede reflexo rápido,
+                  cabeça fria em cada saque e concentração máxima quando o jogo
+                  aperta.
+                </p>
+              </div>
             </li>
 
-            <!-- Card 02 — Futebol / amigos -->
-            <li class="card like">
-              <span class="like__tag" aria-hidden="true">02 // MOD</span>
-              <span class="icon-box" aria-hidden="true">
-                <img src="assets/icons/users.svg" alt="" aria-hidden="true" />
-              </span>
-              <h3 class="card__title">Futebol</h3>
-              <p class="card__sub">Fazer hobbies em conjunto</p>
-              <p class="card__text">
-                Gosto de jogar bola e sair com amigos, compartilhar boas
-                conversas, rir com eles e transformar momentos simples em
-                experiências memoráveis.
-              </p>
-              <p class="card__foot"><span>Perfil</span> Ambivertido</p>
+            <li class="card-gosto">
+              <div class="icone-box">
+                <img
+                  src="assets/icons/users.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="gosto-info">
+                <h3>Futebol e amigos</h3>
+                <p>
+                  Gosto de jogar bola e de sair com a galera, conversar, rir e
+                  fazer de um dia comum um momento que a gente lembra depois.
+                </p>
+              </div>
             </li>
 
-            <!-- Card 03 — Tecnologia (destaque) -->
-            <li class="card like like--core">
-              <span class="like__tag" aria-hidden="true">03 // CORE</span>
-              <span class="icon-box" aria-hidden="true">
-                <img src="assets/icons/monitor.svg" alt="" aria-hidden="true" />
-              </span>
-              <h3 class="card__title">Tecnologia</h3>
-              <p class="card__sub">Engenharia &amp; Dados</p>
-              <ul class="tech-tags">
-                <li>Front-end</li>
-                <li>Back-end</li>
-                <li>Dados</li>
-                <li class="tech-tags__java">Tudo e quase Java ☕</li>
-              </ul>
-              <p class="card__foot">
-                <span>Status</span> <em>Constante Evolução</em>
-              </p>
+            <li class="card-gosto card-destaque">
+              <div class="icone-box">
+                <img
+                  src="assets/icons/monitor.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="gosto-info">
+                <div class="titulo-com-tag">
+                  <h3>Tecnologia</h3>
+                  <span class="chip-tech">Em foco</span>
+                </div>
+                <p>
+                  Front-end, back-end, dados e quase tudo em Java. Estou sempre
+                  aprendendo e construindo alguma coisa nova.
+                </p>
+              </div>
             </li>
 
-            <!-- Card 04 — Animes -->
-            <li class="card like">
-              <span class="like__tag" aria-hidden="true">04 // MOD</span>
-              <span class="icon-box" aria-hidden="true">
-                <img src="assets/icons/tv.svg" alt="" aria-hidden="true" />
-              </span>
-              <h3 class="card__title">Animes</h3>
-              <p class="card__sub">Histórias &amp; Narrativas</p>
-              <p class="card__text">
-                Apreciação por animações japonesas com tramas densas, superação,
-                estratégia e mundos visuais que inspiram criatividade.
-              </p>
-              <p class="card__foot">
-                <span>Referência</span> Shōnen &amp; Seinen
-              </p>
+            <li class="card-gosto">
+              <div class="icone-box">
+                <img
+                  src="assets/icons/tv.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="gosto-info">
+                <h3>Animes</h3>
+                <p>
+                  Curto shōnen e seinen, principalmente os que têm história
+                  densa, superação, estratégia e um estilo visual marcante.
+                </p>
+              </div>
             </li>
           </ul>
         </div>
       </section>
 
-      <!-- =====================================================
-           ONDE JÁ FUI — log de viagens (cards alternados)
-           ===================================================== -->
-      <section class="section" id="viagens" aria-labelledby="viagens-title">
+      <!-- Onde já fui -->
+      <section class="secao" id="viagens" aria-labelledby="viagens-title">
         <div class="container">
-          <header class="section-head">
-            <p class="kicker">Log de expedições</p>
-            <h2 class="section-title" id="viagens-title">🗺️ Onde já fui</h2>
-            <p class="section-desc">
-              Diário editorial de vivências práticas, competições e aprendizado
-              profissional em campo.
+          <header class="secao-cabecalho">
+            <span class="secao-kicker">Experiências &amp; Bagagem</span>
+            <h2 class="titulo-secao" id="viagens-title">Onde já fui</h2>
+            <p class="secao-subtitulo">
+              Viagens marcantes que fiz através do Germinare Business e dos
+              campeonatos escolares.
             </p>
           </header>
 
-          <div class="trips">
-            <!-- Viagem 1 — Goiânia -->
-            <article class="card trip">
-              <figure class="trip__media">
+          <div class="viagens-lista">
+            <article class="viagem">
+              <figure class="viagem-foto">
                 <img
                   src="assets/images/goiania2.png"
-                  alt="João Victor e seus colegas em Goiânia: grupo em frente a um ônibus de viagem e, ao lado, posando diante de uma tropa de muares em uma fazenda"
+                  alt="João Victor e seus colegas de turma em Goiânia reunidos na frente do ônibus de viagem e junto aos muares na fazenda"
                   width="1823"
                   height="704"
                   loading="lazy"
                 />
-                <span class="log-pill" aria-hidden="true">LOG: GO_02</span>
               </figure>
-              <div class="trip__body">
-                <ul class="badges" aria-label="Etiquetas">
-                  <li class="badge badge--green">Programa de Férias</li>
-                  <li class="badge">JBS</li>
-                  <li class="badge">JBJ</li>
-                </ul>
-                <h3 class="trip__title">Goiânia — Goiás</h3>
-                <p class="card__sub">Imersão em Cadeia Agroindustrial</p>
-                <p class="card__text">
-                  Goiânia foi a minha segunda viagem durante o
-                  <strong>Programa de Férias</strong> do Germinare Business. Lá
-                  conheci a fábrica de bovinos da <em>JBS</em> e (a parte mais
-                  legal) a <em>JBJ</em>, empresa que atua diretamente com os
-                  cuidados dos animais.
-                </p>
-                <p class="trip__foot">
-                  <span>Localidade: GO</span><span>Germinare Business</span>
+              <div class="viagem-texto">
+                <div class="viagem-meta">
+                  <span class="local"
+                    >Goiás · Programa de Férias Germinare</span
+                  >
+                  <h3>Goiânia</h3>
+                </div>
+                <p>
+                  Foi a minha segunda viagem do Programa de Férias do Germinare
+                  Business. Visitei a fábrica de bovinos da JBS e a JBJ, empresa
+                  que cuida diretamente dos animais — essa conexão prática com o
+                  campo foi a parte de que mais gostei.
                 </p>
               </div>
             </article>
 
-            <!-- Viagem 2 — Rio Grande do Sul -->
-            <article class="card trip">
-              <figure class="trip__media">
+            <article class="viagem">
+              <figure class="viagem-foto">
                 <img
                   src="assets/images/seberi.png"
-                  alt="João Victor e colegas em Seberi (RS): estudantes com uniformes brancos da fábrica caminhando em um jardim e grupo reunido à noite diante de uma igreja iluminada de azul"
+                  alt="João Victor e colegas em Seberi com uniforme branco nas instalações da fábrica e reunidos à noite em frente à igreja iluminada"
                   width="1752"
                   height="938"
                   loading="lazy"
                 />
-                <span class="log-pill" aria-hidden="true">LOG: RS_03</span>
               </figure>
-              <div class="trip__body">
-                <ul class="badges" aria-label="Etiquetas">
-                  <li class="badge badge--green">Programa de Férias</li>
-                  <li class="badge">JBS</li>
-                  <li class="badge badge--solid">PDCA</li>
-                </ul>
-                <h3 class="trip__title">Seberi, Iraí e Ametista do Sul — RS</h3>
-                <p class="card__sub">Otimização de Processos Industriais</p>
-                <p class="card__text">
-                  Durante meu último Programa de Férias da escola, conheci
-                  Seberi, Iraí e Ametista do Sul. Pequenas cidades do Rio Grande
-                  do Sul, foi lá que visitei e aprendi muito na fábrica de
-                  suínos da JBS, desenvolvendo melhorias através da metodologia
-                  PDCA
+              <div class="viagem-texto">
+                <div class="viagem-meta">
+                  <span class="local"
+                    >Rio Grande do Sul · Programa de Férias</span
+                  >
+                  <h3>Seberi, Iraí e Ametista do Sul</h3>
+                </div>
+                <p>
+                  No meu último Programa de Férias da escola, passei por três
+                  cidades do interior gaúcho. Visitei a fábrica de suínos da JBS
+                  e aprendi bastante aplicando e desenvolvendo melhorias
+                  práticas através do método PDCA
                   <em>(Plan, Do, Check, Act)</em>.
-                </p>
-                <p class="trip__foot">
-                  <span>Metodologia: PDCA</span><span>Rio Grande do Sul</span>
                 </p>
               </div>
             </article>
 
-            <!-- Viagem 3 — Praia Grande -->
-            <article class="card trip">
-              <figure class="trip__media">
+            <article class="viagem">
+              <figure class="viagem-foto">
                 <img
                   src="assets/images/pg.png"
-                  alt="Praia Grande à noite vista do alto, com a orla iluminada, e partida de tênis de mesa de duplas no ginásio do JEESP"
+                  alt="Vista noturna panorâmica da orla de Praia Grande e jogo de tênis de mesa em duplas no ginásio do JEESP"
                   width="1463"
                   height="840"
                   loading="lazy"
                 />
-                <span class="log-pill" aria-hidden="true">LOG: PG_JEESP</span>
               </figure>
-              <div class="trip__body">
-                <ul class="badges" aria-label="Etiquetas">
-                  <li class="badge badge--green">JEESP</li>
-                  <li class="badge">Tênis de Mesa</li>
-                  <li class="badge">Quartas de Final</li>
-                </ul>
-                <h3 class="trip__title">Praia Grande — SP</h3>
-                <p class="card__sub">Jogos Escolares do Estado de SP</p>
-                <p class="card__text">
-                  Ano passado fui representar a escola no
+              <div class="viagem-texto">
+                <div class="viagem-meta">
+                  <span class="local">São Paulo · Tênis de mesa</span>
+                  <h3>Praia Grande</h3>
+                </div>
+                <p>
+                  Ano passado representei a escola no
                   <abbr title="Jogos Escolares do Estado de São Paulo"
                     >JEESP</abbr
-                  >
-                  em Praia Grande, na modalidade de tênis de mesa. Joguei como
-                  jogador principal da equipe, que chegou até as quartas de
-                  final. Apesar de termos voltado cedo para casa, foi uma das
-                  minhas viagens favoritas — anseio por um resultado melhor este
-                  ano.
-                </p>
-                <p class="trip__foot">
-                  <span>Modalidade: Tênis de Mesa</span><span>São Paulo</span>
+                  >, em Praia Grande. Joguei como principal atleta da equipe e
+                  alcançamos as quartas de final. Voltamos cedo para casa, mas
+                  foi uma das viagens mais intensas e divertidas.
                 </p>
               </div>
             </article>
@@ -334,197 +288,164 @@
         </div>
       </section>
 
-      <!-- =====================================================
-           TOP 3: JAPÃO — destinos que quero conhecer
-           ===================================================== -->
-      <section class="section" id="destinos" aria-labelledby="destinos-title">
+      <!-- Top 3: Japão -->
+      <section class="secao" id="destinos" aria-labelledby="destinos-title">
         <div class="container">
-          <header class="section-head section-head--split">
-            <div>
-              <p class="kicker">Destino em análise // Radar 2025+</p>
-              <h2 class="section-title" id="destinos-title">🏆 Top 3: Japão</h2>
-              <p class="section-desc">
-                Os 3 lugares que quero conhecer: destinos onde confluem inovação
-                tecnológica, arquitetura esportiva e marcos culturais.
-              </p>
-            </div>
-            <p class="pill">
-              <span class="dot" aria-hidden="true"></span>País alvo: JP (<span
-                lang="ja"
-                >日本</span
-              >)
+          <header class="secao-cabecalho">
+            <span class="secao-kicker">Próximos Sonhos</span>
+            <h2 class="titulo-secao" id="destinos-title">Top 3: Japão</h2>
+            <p class="secao-subtitulo">
+              Os três lugares que mais quero conhecer por lá.
             </p>
           </header>
 
-          <ol class="dest-grid">
-            <!-- Destino #01 — Ginásio Municipal de Akita -->
-            <li class="card dest">
+          <ol class="destinos">
+            <li class="destino">
               <a
-                class="dest__media"
+                class="destino-foto"
                 href="https://en.wikipedia.org/wiki/CNA_Arena_Akita"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Abrir página sobre Ginásio Municipal de Akita (abre em nova aba)"
               >
                 <img
                   src="assets/images/Akita_Municipal_Gymnasium_20111014a.jpg"
-                  alt="Ginásio Municipal de Akita, arena com cúpula prateada sob céu azul (abre em nova aba)"
+                  alt="Ginásio Municipal de Akita com cúpula prateada moderna"
                   width="500"
                   height="375"
                   loading="lazy"
                 />
-                <span class="dest__num" aria-hidden="true">#01</span>
               </a>
-              <div class="dest__body">
-                <h3 class="card__title">📍 Ginásio Municipal de Akita</h3>
-                <p class="card__sub">Akita, Japão</p>
-                <p class="card__text">
-                  Cúpula futurista imponente e palco de grandes eventos
-                  esportivos. Representa o elo perfeito entre arquitetura de
-                  ponta e esportes de quadra.
+              <div class="destino-info">
+                <span class="local">Akita · Esporte &amp; Arquitetura</span>
+                <h3>Ginásio Municipal de Akita</h3>
+                <p>
+                  Arena de cúpula prateada imponente que recebe grandes
+                  competições esportivas. Junta arquitetura inovadora e o clima
+                  de esporte de quadra que eu adoro.
                 </p>
-                <div class="dest__links">
+                <div class="links">
                   <a
-                    class="link-arrow"
+                    class="link-pill"
                     href="https://pt.wikipedia.org/wiki/Akita_(cidade)"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Como é Akita?<span class="sr-only">
-                      (abre em nova aba)</span
-                    >
+                    Sobre Akita <span class="seta" aria-hidden="true">↗</span>
+                    <span class="sr-only">(abre em nova aba)</span>
                   </a>
                   <a
-                    class="link-arrow"
+                    class="link-pill"
                     href="https://en.wikipedia.org/wiki/CNA_Arena_Akita"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Ginásio Municipal de Akita<span class="sr-only">
-                      (abre em nova aba)</span
-                    >
+                    Sobre a Arena <span class="seta" aria-hidden="true">↗</span>
+                    <span class="sr-only">(abre em nova aba)</span>
                   </a>
                 </div>
               </div>
             </li>
 
-            <!-- Destino #02 — Aomori -->
-            <li class="card dest">
+            <li class="destino">
               <a
-                class="dest__media"
+                class="destino-foto"
                 href="https://pt.wikipedia.org/wiki/Aomori_(cidade)"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Abrir página sobre a orla de Aomori (abre em nova aba)"
               >
                 <img
                   src="assets/images/aomori.jpg"
-                  alt="Orla de Aomori, cidade do norte do Japão (abre em nova aba)"
+                  alt="Orla marítima de Aomori sob céu límpido"
                   width="900"
                   height="600"
                   loading="lazy"
                 />
-                <span class="dest__num" aria-hidden="true">#02</span>
               </a>
-              <div class="dest__body">
-                <h3 class="card__title">❄️ Aomori</h3>
-                <p class="card__sub">Região de Tōhoku, Japão</p>
-                <p class="card__text">
-                  Cidade litorânea com a icônica pirâmide ASPAM, pontes
-                  estaiadas iluminadas e harmonia única entre natureza serena e
-                  iluminação urbana moderna.
+              <div class="destino-info">
+                <span class="local">Região de Tōhoku · Litoral</span>
+                <h3>Aomori</h3>
+                <p>
+                  Cidade costeira que equilibra tranquilidade com construções
+                  futuristas como o edifício ASPAM e pontes estaiadas. Um lugar
+                  calmo onde natureza e tecnologia convivem bem.
                 </p>
-                <div class="dest__links">
+                <div class="links">
                   <a
-                    class="link-arrow"
+                    class="link-pill"
                     href="https://pt.wikipedia.org/wiki/Aomori_(cidade)"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Como é Aomori?<span class="sr-only">
-                      (abre em nova aba)</span
-                    >
+                    Conhecer Aomori
+                    <span class="seta" aria-hidden="true">↗</span>
+                    <span class="sr-only">(abre em nova aba)</span>
                   </a>
                 </div>
               </div>
             </li>
 
-            <!-- Destino #03 — Tóquio -->
-            <li class="card dest">
+            <li class="destino">
               <a
-                class="dest__media"
+                class="destino-foto"
                 href="https://www.japan.travel/pt/destinations/kanto/tokyo/"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Abrir guia oficial de Tóquio (abre em nova aba)"
               >
                 <img
                   src="assets/images/shib.webp"
-                  alt="Cruzamento de Shibuya, em Tóquio, à noite, com multidão na faixa e prédios cobertos de letreiros luminosos (abre em nova aba)"
+                  alt="Cruzamento icônico de Shibuya em Tóquio à noite com letreiros neon"
                   width="1280"
                   height="720"
                   loading="lazy"
                 />
-                <span class="dest__num" aria-hidden="true">#03</span>
               </a>
-              <div class="dest__body">
-                <h3 class="card__title">🌆 Tóquio</h3>
-                <p class="card__sub">Capital da Tecnologia &amp; Cultura Pop</p>
-                <p class="card__text">
-                  O coração pulsante da vanguarda tecnológica mundial, berço dos
-                  maiores estúdios de animes, distritos de hardware e ligas
-                  profissionais de tênis de mesa.
+              <div class="destino-info">
+                <span class="local"
+                  >Metrópole · Tecnologia &amp; Cultura Pop</span
+                >
+                <h3>Tóquio</h3>
+                <p>
+                  A capital japonesa reúne estúdios de anime mundialmente
+                  famosos, bairros inteiros dedicados a eletrônicos e as
+                  principais ligas profissionais de tênis de mesa.
                 </p>
-                <div class="dest__links">
+                <div class="links">
                   <a
-                    class="link-arrow"
+                    class="link-pill"
                     href="https://www.japan.travel/pt/destinations/kanto/tokyo/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Site oficial de Tóquio<span class="sr-only">
-                      (abre em nova aba)</span
-                    >
+                    Guia oficial de Tóquio
+                    <span class="seta" aria-hidden="true">↗</span>
+                    <span class="sr-only">(abre em nova aba)</span>
                   </a>
                 </div>
               </div>
             </li>
           </ol>
 
-          <!-- Síntese -->
-          <aside class="synthesis" aria-label="Síntese">
-            <div>
-              <p class="kicker kicker--plain">Síntese // Direcionamento</p>
-              <blockquote class="synthesis__quote">
-                <p>
-                  “O Japão é um país que une boa parte de meus gostos:
-                  Tecnologia, Tênis de Mesa e Animes.”
-                </p>
-              </blockquote>
-            </div>
-            <p class="pill">
-              <span class="dot" aria-hidden="true"></span>Próxima expedição
-            </p>
-          </aside>
+          <p class="fecho">
+            O Japão junta boa parte do que me fascina: tecnologia de ponta,
+            tênis de mesa de alto nível e animes.
+          </p>
         </div>
       </section>
     </main>
 
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
-    <footer class="footer">
-      <div class="container footer__inner">
-        <div class="footer__brand">
-          <span class="monogram" aria-hidden="true">JV</span>
-          <strong>João Victor — JV</strong>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">JV</span>
+          <p>João Victor · 2026</p>
         </div>
-
-        <p class="footer__tagline">
-          <span class="dot" aria-hidden="true"></span>
-          Construindo caminhos entre tecnologia, esporte e novas experiências.
-        </p>
-
-        <a class="to-top" href="#"
-          >Voltar ao topo <span aria-hidden="true">↑</span></a
-        >
+        <div class="footer-links">
+          <a class="link-topo" href="#">Voltar ao topo ↑</a>
+        </div>
       </div>
     </footer>
   </body>
