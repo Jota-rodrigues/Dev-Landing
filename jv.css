@@ -1,24 +1,19 @@
-/* ==========================================================================
-   João Victor (JV) — Landing Page Dark Tech Minimalista
-   Paleta: Dark (#080b09) + Verde Vibrante (#2ee67a)
-   ========================================================================== */
-
 :root {
   /* Cores Dark Tech */
   --bg: #080b09;
   --bg-elev: #0e1411;
   --bg-card: #111814;
   --bg-card-hover: #151f1a;
-  
+
   --green: #2ee67a;
   --green-hover: #25e072;
   --green-glow: rgba(46, 230, 122, 0.15);
   --green-faint: rgba(46, 230, 122, 0.08);
-  
+
   --text: #f3f6f4;
   --text-body: #a2aca5;
   --text-muted: #748078;
-  
+
   --line: rgba(255, 255, 255, 0.08);
   --line-hover: rgba(46, 230, 122, 0.35);
 
@@ -74,8 +69,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(46, 230, 122, 0.06) 0%, transparent 60%);
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    rgba(46, 230, 122, 0.06) 0%,
+    transparent 60%
+  );
   pointer-events: none;
   z-index: -1;
 }
@@ -105,7 +103,11 @@ img {
 a {
   color: var(--green);
   text-decoration: none;
-  transition: color var(--transicao), border-color var(--transicao), background-color var(--transicao), transform var(--transicao);
+  transition:
+    color var(--transicao),
+    border-color var(--transicao),
+    background-color var(--transicao),
+    transform var(--transicao);
 }
 
 a:hover {
@@ -149,9 +151,6 @@ a:hover {
   top: 1rem;
 }
 
-/* ==========================================================================
-   Header (Sticky / Fixo)
-   ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
@@ -170,7 +169,6 @@ a:hover {
   height: 100%;
   gap: 1.5rem;
 }
-
 
 .logo {
   display: inline-flex;
@@ -241,9 +239,6 @@ a:hover {
   transform-origin: left;
 }
 
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
 .hero {
   padding-block: 5rem 6rem;
   position: relative;
@@ -284,7 +279,8 @@ a:hover {
 }
 
 @keyframes pulse-dot {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -302,7 +298,6 @@ a:hover {
   color: var(--text);
 }
 
-/* Animação Contínua do Gradiente Branco e Verde em João Victor */
 .gradient-name {
   display: inline-block;
   background: linear-gradient(
@@ -423,7 +418,10 @@ a:hover {
   border: 1px solid var(--line);
   background: var(--bg-card);
   box-shadow: var(--sombra-card);
-  transition: border-color var(--transicao), transform var(--transicao), box-shadow var(--transicao);
+  transition:
+    border-color var(--transicao),
+    transform var(--transicao),
+    box-shadow var(--transicao);
 }
 
 .foto-frame:hover {
@@ -465,9 +463,6 @@ a:hover {
   text-align: center;
 }
 
-/* ==========================================================================
-   Seções Gerais e :target
-   ========================================================================== */
 .secao {
   padding-block: 5.5rem;
   border-top: 1px solid var(--line);
@@ -475,7 +470,6 @@ a:hover {
   transition: border-color var(--transicao);
 }
 
-/* Pseudo-classe :target destacando sutilmente a seção ativa ao rolar por âncora */
 .secao:target .titulo-secao {
   color: var(--green);
 }
@@ -510,9 +504,6 @@ a:hover {
   max-width: 36rem;
 }
 
-/* ==========================================================================
-   Seção: Meus Gostos (CSS Grid)
-   ========================================================================== */
 .gostos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -529,7 +520,10 @@ a:hover {
   border-radius: var(--raio-md);
   box-shadow: var(--sombra-card);
   position: relative;
-  transition: transform var(--transicao), border-color var(--transicao), background-color var(--transicao);
+  transition:
+    transform var(--transicao),
+    border-color var(--transicao),
+    background-color var(--transicao);
 }
 
 .card-gosto:hover {
@@ -541,7 +535,11 @@ a:hover {
 /* Uso de :nth-child(3) para dar destaque diferenciado ao módulo de Tecnologia */
 .gostos .card-gosto:nth-child(3) {
   border-color: rgba(46, 230, 122, 0.35);
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(46, 230, 122, 0.04) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-card) 0%,
+    rgba(46, 230, 122, 0.04) 100%
+  );
 }
 
 .gostos .card-gosto:nth-child(3)::before {
@@ -608,10 +606,6 @@ a:hover {
   font-size: 0.96rem;
   line-height: 1.6;
 }
-
-/* ==========================================================================
-   Seção: Onde já fui (Viagens - Sem cortar as imagens!)
-   ========================================================================== */
 .viagens-lista {
   display: flex;
   flex-direction: column;
@@ -712,7 +706,9 @@ a:hover {
   border: 1px solid var(--line);
   background: var(--bg-card);
   box-shadow: var(--sombra-card);
-  transition: border-color var(--transicao), transform var(--transicao);
+  transition:
+    border-color var(--transicao),
+    transform var(--transicao);
 }
 
 .destino-foto:hover {
@@ -803,9 +799,7 @@ a:hover {
   padding-left: 1.25rem;
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/* Footer */
 .site-footer {
   padding-block: 2.75rem;
   border-top: 1px solid var(--line);
@@ -861,9 +855,7 @@ a:hover {
   font-weight: 600;
 }
 
-/* ==========================================================================
-   Responsividade (Tablet & Mobile)
-   ========================================================================== */
+/* RESPONSIVIDADE */
 @media (max-width: 56rem) {
   html {
     scroll-padding-top: 6rem;
@@ -923,7 +915,6 @@ a:hover {
     align-items: flex-start;
   }
 
-
   .menu ul {
     gap: 1.25rem;
   }
@@ -953,9 +944,6 @@ a:hover {
   }
 }
 
-/* ==========================================================================
-   prefers-reduced-motion (Acessibilidade)
-   ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
